@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resumen Seminario KAI ROI | Universidad Nebrija</title>
+  <meta name="description" content="Repositorio post-evento del Seminario de Investigacion Nebrija sobre KAI ROI: monetizacion del dato, Ecuacion KAI, modelo de atribucion y metodologia DIIIP.">
+  <style>
+    :root {
+      --black: #050505;
+      --ink: #111;
+      --white: #fff;
+      --muted: #c8c8c8;
+      --red: #c91236;
+      --red-soft: #f02a4d;
+      --blue: #126f8c;
+      --blue-dark: #06455e;
+      --line: rgba(255,255,255,.14);
+      --max: 1180px;
+      --hero-photo: url("https://docroi.marketing/wp-content/uploads/2026/05/Foto_Corp.png");
+      --formula-bg: url("https://docroi.marketing/wp-content/uploads/2026/05/JorgeLucio.png");
+      --football-photo: url("https://docroi.marketing/wp-content/uploads/2026/06/KAI-y-futbol.png");
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--black); }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+
+    .page { min-height: 100vh; overflow-x: hidden; }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #171717;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav {
+      width: min(100% - 32px, calc(var(--max) + 220px));
+      min-height: 86px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand img {
+      width: 168px;
+      height: auto;
+      display: block;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .menu a {
+      min-height: 38px;
+      padding: 11px 13px;
+      color: rgba(255,255,255,.78);
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .menu a:hover,
+    .menu a:focus-visible {
+      color: #fff;
+      border-color: rgba(255,255,255,.7);
+      outline: none;
+    }
+    .menu a:last-child {
+      border-color: rgba(255,255,255,.9);
+      padding-inline: 20px;
+    }
+
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(90deg, #000 0%, rgba(0,0,0,.93) 28%, rgba(0,0,0,.64) 62%, rgba(0,0,0,.38) 100%),
+        linear-gradient(135deg, rgba(201,18,54,.22), transparent 44%),
+        var(--hero-photo) right 25% / cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+    .hero .inner {
+      padding: clamp(36px, 7vw, 82px) 0 clamp(34px, 6vw, 70px);
+    }
+    .kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .46fr);
+      gap: clamp(18px, 3.5vw, 34px);
+      align-items: stretch;
+    }
+    .hero-main,
+    .quick-access {
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      background: rgba(8,81,107,.86);
+      box-shadow: 0 26px 70px rgba(0,0,0,.42);
+    }
+    .hero-main { padding: clamp(26px, 4vw, 48px); }
+    .quick-access {
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      padding: clamp(22px, 3vw, 34px);
+    }
+    .eyebrow {
+      margin-bottom: 14px;
+      color: #b7ecff;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .title {
+      max-width: 800px;
+      font-size: clamp(40px, 7vw, 82px);
+      line-height: .96;
+      font-weight: 950;
+    }
+    .lead {
+      max-width: 820px;
+      margin-top: 22px;
+      color: rgba(255,255,255,.78);
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.46;
+    }
+    .quick-access h2 {
+      font-size: clamp(26px, 3.6vw, 42px);
+      line-height: 1.08;
+      font-weight: 900;
+    }
+    .quick-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 56px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 7px;
+      padding: 13px 15px;
+      background: rgba(0,0,0,.24);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .band {
+      padding: clamp(38px, 6.5vw, 76px) 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: #080808;
+    }
+    .band.blue {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.45)),
+        #063f58;
+    }
+    .section-title {
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1;
+      font-weight: 950;
+    }
+    .section-copy {
+      max-width: 780px;
+      margin-top: 18px;
+      color: rgba(255,255,255,.72);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .short-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .short-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 11px 14px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 7px;
+      background: rgba(255,255,255,.06);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .s-curve {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .video-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(18px, 4vw, 54px);
+      align-items: center;
+      padding: clamp(18px, 3vw, 30px);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(18,111,140,.32), rgba(0,0,0,.2)),
+        rgba(255,255,255,.035);
+    }
+    .video-row:nth-child(even) .video-frame { order: 2; }
+    .video-row:nth-child(even) .video-text { order: 1; }
+    .video-frame {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      background: #000;
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-text {
+      padding: clamp(6px, 2vw, 18px);
+    }
+    .video-text h3 {
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.05;
+      font-weight: 950;
+    }
+    .video-text p {
+      margin-top: 16px;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .video-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 16px;
+      border: 1px solid var(--red);
+      border-radius: 6px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .button.ghost {
+      border-color: rgba(255,255,255,.34);
+      background: rgba(255,255,255,.07);
+    }
+    .placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      border: 1px dashed rgba(255,255,255,.28);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        rgba(0,0,0,.22);
+      color: rgba(255,255,255,.65);
+      text-align: center;
+      padding: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .diip {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.38)),
+        var(--formula-bg) right 20% / cover no-repeat;
+    }
+    .diip-list {
+      display: grid;
+      gap: 12px;
+      max-width: 940px;
+      margin-top: 30px;
+    }
+    .diip-item {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 76px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      background: rgba(255,255,255,.94);
+      color: #111;
+      padding: 14px 18px;
+    }
+    .diip-letter {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: #07121a;
+      color: #fff;
+      font-weight: 950;
+    }
+    .diip-item strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 950;
+    }
+    .diip-item span {
+      display: block;
+      margin-top: 3px;
+      color: rgba(17,17,17,.64);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .nebrija-strip {
+      background: #000;
+      padding: clamp(24px, 3.5vw, 40px) 24px;
+      text-align: center;
+    }
+    .nebrija-strip img {
+      width: min(54vw, 260px);
+      height: auto;
+    }
+    .footer {
+      background:#000;
+      padding:68px 24px 54px;
+      text-align:center;
+      color:#D1D5DB;
+    }
+    .footer a { color: inherit; }
+
+    @media (max-width: 900px) {
+      .nav { min-height: 78px; }
+      .brand img { width: 126px; }
+      .menu { display: none; }
+      .hero-grid,
+      .video-row {
+        grid-template-columns: 1fr;
+      }
+      .video-row:nth-child(even) .video-frame,
+      .video-row:nth-child(even) .video-text {
+        order: initial;
+      }
+      .quick-access { align-content: start; }
+    }
+
+    @media (max-width: 560px) {
+      .inner,
+      .nav {
+        width: min(100% - 22px, var(--max));
+      }
+      .hero { background-position: 70% 20%; }
+      .video-row { padding: 14px; }
+      .diip-item { grid-template-columns: 42px minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <nav class="nav" aria-label="Navegacion principal">
+        <a class="brand" href="#inicio" aria-label="Inicio">
+          <img src="https://docroi.marketing/wp-content/uploads/2026/06/1700582564060.jpeg" alt="Nebrija Business & Technology School">
+        </a>
+        <div class="menu">
+          <a href="#resumen">Resumen</a>
+          <a href="#videos">Videos</a>
+          <a href="#diip">DIIIP</a>
+          <a href="index.html">Landing original</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="inner">
+          <div class="kicker">
+            <span class="pill">Seminario de investigacion</span>
+            <span class="pill">Universidad Nebrija</span>
+            <span class="pill">KAI ROI v1</span>
+          </div>
+          <div class="hero-grid">
+            <div class="hero-main" id="resumen">
+              <p class="eyebrow">Repositorio post-evento</p>
+              <h1 class="title">Resumen de la sesion KAI ROI.</h1>
+              <p class="lead">Acceso ordenado a los contenidos del seminario: monetizacion del dato, Ecuacion KAI, modelo de atribucion y metodologia DIIIP para conectar dato, IA, decision y ROI medible.</p>
+            </div>
+            <aside class="quick-access" aria-label="Accesos rapidos">
+              <h2>Accesos del seminario</h2>
+              <a class="quick-link" href="https://docroi.marketing/wp-content/uploads/2026/06/2026.06.07.Ecuacion-KAI%C2%B7ROI-Monetizacion-del-dato-y-ROI-en-la-era-de-la-IA-1.pdf" target="_blank" rel="noopener">Presentacion <span>-></span></a>
+              <a class="quick-link" href="https://docroi.marketing/wp-content/uploads/2026/05/KAI%C2%B7ROI_Equation.pdf" target="_blank" rel="noopener">Formula KAI <span>-></span></a>
+              <a class="quick-link" href="https://docroi-kai-diagnosis.vercel.app/diagnosis" target="_blank" rel="noopener">Simulador <span>-></span></a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="band blue" id="videos">
+        <div class="inner">
+          <p class="eyebrow">Shorts del seminario</p>
+          <h2 class="section-title">Videos y claves ejecutivas.</h2>
+          <p class="section-copy">Cada modulo resume una pieza de la sesion y permite acceder al video completo en YouTube. La lectura sigue una curva editorial: video, contexto, siguiente video y aplicacion.</p>
+          <nav class="short-nav" aria-label="Navegacion de videos">
+            <a href="#monetizacion">Monetizacion del dato</a>
+            <a href="#ecuacion">Ecuacion KAI</a>
+            <a href="#atribucion">Modelo de atribucion</a>
+            <a href="#proximos">Proximos videos</a>
+          </nav>
+
+          <div class="s-curve">
+            <article class="video-row" id="monetizacion">
+              <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/z5XfIIf2BpQ" title="Monetizacion del dato" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-text">
+                <h3>Monetizacion del dato.</h3>
+                <p>La monetizacion del dato ya es una realidad cuando la organizacion entiende como digitalizar procesos, activar informacion operativa y convertir datos disponibles en decisiones, eficiencia, crecimiento y ROI medible.</p>
+                <div class="video-actions">
+                  <a class="button" href="https://youtu.be/z5XfIIf2BpQ" target="_blank" rel="noopener">Ver en YouTube</a>
+                  <a class="button ghost" href="#diip">Ver metodologia</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="video-row" id="ecuacion">
+              <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/vbHgvoZG8o0" title="Ecuacion KAI ROI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-text">
+                <h3>Ecuacion KAI ROI.</h3>
+                <p>La Ecuacion KAI ROI v1 ordena la relacion entre dato, inteligencia artificial, objetivos de negocio, orientacion algoritimica al cliente, productividad y salud de cartera para explicar cuando aparece valor economico real.</p>
+                <div class="video-actions">
+                  <a class="button" href="https://youtu.be/vbHgvoZG8o0" target="_blank" rel="noopener">Ver en YouTube</a>
+                  <a class="button ghost" href="https://docroi.marketing/wp-content/uploads/2026/05/KAI%C2%B7ROI_Equation.pdf" target="_blank" rel="noopener">White paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="video-row" id="atribucion">
+              <div class="video-frame">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/6LFVay-Vr1s" title="Modelo de atribucion" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-text">
+                <h3>Modelo de atribucion.</h3>
+                <p>El modelo de atribucion ayuda a entender que decisiones, canales, activos y acciones contribuyen realmente al resultado. Su papel es pasar de la intuicion a la evidencia y explicar el ROI desde palancas concretas.</p>
+                <div class="video-actions">
+                  <a class="button" href="https://youtu.be/6LFVay-Vr1s" target="_blank" rel="noopener">Ver en YouTube</a>
+                  <a class="button ghost" href="#resumen">Volver al resumen</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="video-row" id="proximos">
+              <div class="placeholder">Proximo video del seminario</div>
+              <div class="video-text">
+                <h3>Nuevas capsulas.</h3>
+                <p>Este repositorio queda preparado para incorporar dos videos adicionales del seminario manteniendo el mismo patron editorial: una pieza audiovisual y una lectura ejecutiva de aplicacion.</p>
+              </div>
+            </article>
+
+            <article class="video-row">
+              <div class="placeholder">Proximo modulo KAI ROI</div>
+              <div class="video-text">
+                <h3>Continuidad del recorrido.</h3>
+                <p>Los proximos contenidos podran ampliar la aplicacion del modelo a casos de negocio, diagnostico, Customer Equity, productividad, LTV, churn o activacion de datos en ecosistemas comerciales.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band diip" id="diip">
+        <div class="inner">
+          <p class="eyebrow">Metodologia al final del recorrido</p>
+          <h2 class="section-title">DIIIP: dato a decision.</h2>
+          <p class="section-copy">DIIIP ordena la logica: el valor no aparece en un nodo aislado. El valor aparece cuando el dato bruto se transforma en una decision visible.</p>
+          <div class="diip-list">
+            <div class="diip-item"><span class="diip-letter">D</span><div><strong>Data</strong><span>Dato bruto disponible en sistemas, canales, documentos o procesos.</span></div></div>
+            <div class="diip-item"><span class="diip-letter">I</span><div><strong>Information</strong><span>Dato organizado con contexto, significado, fuente y trazabilidad.</span></div></div>
+            <div class="diip-item"><span class="diip-letter">I</span><div><strong>Intelligence</strong><span>Analisis, IA y reglas de negocio capaces de extraer patrones utiles.</span></div></div>
+            <div class="diip-item"><span class="diip-letter">I</span><div><strong>Insights</strong><span>Lecturas accionables para direccion, negocio, cliente y operacion.</span></div></div>
+            <div class="diip-item"><span class="diip-letter">P</span><div><strong>Personalization Actions</strong><span>Decision, automatizacion o accion personalizada que hace visible el valor.</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="nebrija-strip" aria-label="Universidad Nebrija">
+        <img src="https://docroi.marketing/wp-content/uploads/2026/06/1700582564060.jpeg" alt="Nebrija Business & Technology School">
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div style="max-width:920px;margin:0 auto;">
+        <a href="https://el-botiquin-del-doc-roi.vercel.app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;margin-bottom:24px;">
+          <img src="https://docroi.marketing/wp-content/uploads/2026/05/Logo_Negro_DoC_ROI.jpg" alt="Doc ROI" style="height:72px;width:auto;display:block;">
+        </a>
+        <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;color:#D1D5DB;font-size:14px;line-height:1.6;margin-bottom:24px;">
+          <a href="https://docroi.marketing/aviso-legal/" target="_blank" rel="noopener" style="color:#D1D5DB;text-decoration:none;">Politica de privacidad</a>
+          <span style="opacity:.4;">|</span>
+          <a href="https://docroi.marketing/aviso-legal/" target="_blank" rel="noopener" style="color:#D1D5DB;text-decoration:none;">Aviso legal</a>
+          <span style="opacity:.4;">|</span>
+          <a href="https://docroi.marketing/aviso-legal/" target="_blank" rel="noopener" style="color:#D1D5DB;text-decoration:none;">Propiedad intelectual</a>
+        </div>
+        <div style="font-size:15px;line-height:1.9;color:#C0C7D1;font-weight:400;letter-spacing:.01em;">
+          <span style="display:block;">La propiedad intelectual del ecosistema Doc ROI pertenece al</span>
+          <a href="https://docroi.marketing/ph-d-jorge-lucio/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+            <span style="display:block;color:#F3F4F6 !important;font-weight:500;">Ph. D. Jorge Lucio Sanchez Galan.</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
