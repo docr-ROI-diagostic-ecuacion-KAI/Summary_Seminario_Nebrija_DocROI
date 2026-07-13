@@ -13,13 +13,14 @@
       --muted: #c8c8c8;
       --red: #c91236;
       --red-soft: #f02a4d;
-      --blue: #126f8c;
-      --blue-dark: #06455e;
+      --glass: rgba(255,255,255,.88);
+      --smoke: rgba(255,255,255,.07);
       --line: rgba(255,255,255,.14);
       --max: 1180px;
       --hero-photo: url("https://docroi.marketing/wp-content/uploads/2026/05/Foto_Corp.png");
       --formula-bg: url("https://docroi.marketing/wp-content/uploads/2026/05/JorgeLucio.png");
       --football-photo: url("https://docroi.marketing/wp-content/uploads/2026/06/KAI-y-futbol.png");
+      --trainers-bg: url("https://docroi.marketing/wp-content/uploads/2026/06/train_trainers.png");
     }
 
     * { box-sizing: border-box; }
@@ -128,7 +129,10 @@
     .quick-access {
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 8px;
-      background: rgba(8,81,107,.86);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        rgba(0,0,0,.68);
+      backdrop-filter: blur(10px);
       box-shadow: 0 26px 70px rgba(0,0,0,.42);
     }
     .hero-main { padding: clamp(26px, 4vw, 48px); }
@@ -184,8 +188,10 @@
     }
     .band.blue {
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.45)),
-        #063f58;
+        linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.72) 52%, rgba(0,0,0,.5) 100%),
+        linear-gradient(135deg, rgba(201,18,54,.2), rgba(255,255,255,.05) 38%, rgba(0,0,0,.35)),
+        var(--trainers-bg) center / cover no-repeat,
+        #050505;
     }
     .section-title {
       font-size: clamp(34px, 5vw, 60px);
@@ -230,14 +236,22 @@
       gap: clamp(18px, 4vw, 54px);
       align-items: center;
       padding: clamp(18px, 3vw, 30px);
-      border: 1px solid rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: 8px;
       background:
-        linear-gradient(135deg, rgba(18,111,140,.32), rgba(0,0,0,.2)),
-        rgba(255,255,255,.035);
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.76)),
+        rgba(255,255,255,.8);
+      color: #090909;
+      backdrop-filter: blur(12px);
     }
     .video-row:nth-child(even) .video-frame { order: 2; }
     .video-row:nth-child(even) .video-text { order: 1; }
+    .video-row:nth-child(even) {
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.82), rgba(0,0,0,.56)),
+        rgba(0,0,0,.68);
+      color: #fff;
+    }
     .video-frame {
       position: relative;
       overflow: hidden;
@@ -264,10 +278,11 @@
     }
     .video-text p {
       margin-top: 16px;
-      color: rgba(255,255,255,.72);
+      color: rgba(17,17,17,.7);
       font-size: 17px;
       line-height: 1.55;
     }
+    .video-row:nth-child(even) .video-text p { color: rgba(255,255,255,.74); }
     .video-actions {
       display: flex;
       flex-wrap: wrap;
@@ -290,6 +305,11 @@
       text-transform: uppercase;
     }
     .button.ghost {
+      border-color: rgba(0,0,0,.28);
+      background: rgba(0,0,0,.06);
+      color: inherit;
+    }
+    .video-row:nth-child(even) .button.ghost {
       border-color: rgba(255,255,255,.34);
       background: rgba(255,255,255,.07);
     }
@@ -297,16 +317,21 @@
       display: grid;
       place-items: center;
       min-height: 230px;
-      border: 1px dashed rgba(255,255,255,.28);
+      border: 1px dashed rgba(0,0,0,.24);
       border-radius: 8px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        rgba(0,0,0,.22);
-      color: rgba(255,255,255,.65);
+        linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.42)),
+        rgba(255,255,255,.55);
+      color: rgba(0,0,0,.72);
       text-align: center;
       padding: 20px;
       font-weight: 900;
       text-transform: uppercase;
+    }
+    .video-row:nth-child(even) .placeholder {
+      border-color: rgba(255,255,255,.28);
+      background: rgba(0,0,0,.28);
+      color: rgba(255,255,255,.72);
     }
 
     .diip {
@@ -403,7 +428,7 @@
   <div class="page">
     <header class="header">
       <nav class="nav" aria-label="Navegacion principal">
-        <a class="brand" href="#inicio" aria-label="Inicio">
+        <a class="brand" href="https://www.nebrija.com/business-school/" target="_blank" rel="noopener" aria-label="Nebrija Business & Technology School">
           <img src="https://docroi.marketing/wp-content/uploads/2026/06/1700582564060.jpeg" alt="Nebrija Business & Technology School">
         </a>
         <div class="menu">
@@ -529,7 +554,9 @@
       </section>
 
       <section class="nebrija-strip" aria-label="Universidad Nebrija">
-        <img src="https://docroi.marketing/wp-content/uploads/2026/06/1700582564060.jpeg" alt="Nebrija Business & Technology School">
+        <a href="https://www.nebrija.com/business-school/" target="_blank" rel="noopener" aria-label="Nebrija Business & Technology School">
+          <img src="https://docroi.marketing/wp-content/uploads/2026/06/1700582564060.jpeg" alt="Nebrija Business & Technology School">
+        </a>
       </section>
     </main>
 
